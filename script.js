@@ -9,12 +9,27 @@ var whichColor = '';
 
 for (i = 1; i <= 625; i++) {
   var tile = document.createElement('div');
+    tile.addEventListener('mouseenter', paint);
+    tile.addEventListener('click', function() {
+      event.target.style.backgroundColor=whichColor;
+    });
 
-  tile.addEventListener('click',function(event){
-    event.target.style.backgroundColor=whichColor;
-  });
   tile.className='tile';
   base.appendChild(tile);
+}
+
+/*Drag mouse listener ==================================*/
+
+function paint () {
+  base.addEventListener('mousedown',function() {
+    mouseState = true;
+  });
+  body.addEventListener('mouseup',function() {
+    mouseState = false;
+  });
+  if (mouseState === true) {
+    event.target.style.backgroundColor=whichColor;
+  }
 }
 
 /*Color Palette ==================================*/
@@ -70,5 +85,7 @@ colorGreen.addEventListener('click',function(event){
 colorOrange.addEventListener('click',function(event){
   whichColor = 'orange';
 });
+
+
 
 //if can't get synax - set whichColor to array, and run loop saying if click on whichColor[i] then set global variable to color.
