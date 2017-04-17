@@ -24,7 +24,7 @@ function paint () {
   base.addEventListener('mousedown',function() {
     mouseState = true;
   });
-  body.addEventListener('mouseup',function() {
+  base.addEventListener('mouseup',function() {
     mouseState = false;
   });
   if (mouseState === true) {
@@ -64,27 +64,56 @@ colorOrange.className = 'color';
 var yellow = colorOrange.setAttribute('id','orange');
 palette.appendChild(colorOrange);
 
-/*Color seclector events ==================================*/
+/*Reset button ==================================*/
+var reset = document.createElement('button');
+reset.className='reset';
+reset.innerHTML="RESET";
 
-colorBlue.addEventListener('click',function(event){
-  whichColor = 'blue';
+reset.addEventListener('click', function () {
+  window.location.reload(false);
 });
 
+body.appendChild(reset);
+
+/* Current color display panel ==================================*/
+
+var colorDisplayPanel = document.createElement('div');
+colorDisplayPanel.className='colorDisplayPanel';
+colorDisplayPanel.innerHTML="Current color";
+
+body.appendChild(colorDisplayPanel);
+
+/*Color seclector events ==================================*/
+
+// colorBlue.addEventListener('click',function(event){
+//   whichColor = #3498DB;
+// });
+
 colorRed.addEventListener('click',function(event){
-  whichColor = 'red';
+  whichColor = '#E74C3C';
+  colorDisplayPanel.style.backgroundColor= '#E74C3C';
+});
+
+colorBlue.addEventListener('click',function(event){
+  whichColor = '#3498DB';
+  colorDisplayPanel.style.backgroundColor='#3498DB'
 });
 
 colorYellow.addEventListener('click',function(event){
-  whichColor = 'yellow';
+  whichColor = '#F1C40F';
+  colorDisplayPanel.style.backgroundColor='#F1C40F'
 });
 
 colorGreen.addEventListener('click',function(event){
-  whichColor = 'green';
+  whichColor = '#1ECD97';
+  colorDisplayPanel.style.backgroundColor='#1ECD97'
 });
 
 colorOrange.addEventListener('click',function(event){
-  whichColor = 'orange';
+  whichColor = '#F39C12';
+  colorDisplayPanel.style.backgroundColor='#F39C12'
 });
+
 
 
 
